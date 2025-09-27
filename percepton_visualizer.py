@@ -3,6 +3,7 @@ import numpy as np
 import argparse
 from datetime import datetime
 import os
+import imageio.v2 as imageio
 
 
 def get_frames_path(frame_dir, frame_num):
@@ -13,6 +14,18 @@ def get_frames_path(frame_dir, frame_num):
 
     path = os.path.join(frame_dir, f"frame{frame_num}.png")
     return path
+
+
+def make_gif(frame_dir):
+    images = []
+    filenames = sorted(os.listdir(frame_dir))
+
+    for filename in filenames:
+        if filename.endswith(".png"):
+            path = os.path.join(frame_dir, filename)
+            images.append(imageio.imread(path))
+
+    imageio.mimsave("perceptron.gif", images, fps=3)
 
 
 def visualize_perceptron(b: float, w: np.ndarray, y: np.ndarray, X: np.ndarray, epochs: int, alpha=.1, frame_dir=None):
@@ -55,7 +68,7 @@ def plot_hyperplane(b, w, X, final=False, frame_dir=None, frame_num=None):
     plt.xlim(x1_min, x1_max)
     plt.ylim(x2_min, x2_max)
 
-    plt.legend()
+    plt.legend(loc='upper left')
     plt.grid(False)
 
     if frame_dir is not None and frame_num is not None:
@@ -109,3 +122,6 @@ if __name__ == "__main__":
     values = visualize_perceptron(
         b=b, w=w, y=y, X=X, epochs=epochs, alpha=alpha, frame_dir=frame_dir)
     plot_hyperplane(b=values['bias'], w=values['weights'], X=X, final=True)
+
+    if args.gif:
+        make_gif(frame_dir)
