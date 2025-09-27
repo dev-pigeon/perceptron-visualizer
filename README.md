@@ -18,6 +18,12 @@ This script animates this learning process by visualizing how the decision bound
 
 > **Note:** The above algorithm assumes that the bias term is **not** incorporated in the weight vector.
 
+### Demo 🎥
+
+Here’s what the algorithm looks like in action:
+
+![Perceptron Animation](perceptron.gif)
+
 ## Requirements ⚙️
 
 - **Unix-based system** (Linux or MacOS)

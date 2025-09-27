@@ -18,14 +18,20 @@ def get_frames_path(frame_dir, frame_num):
 
 def make_gif(frame_dir):
     images = []
+    fps = 2
+    loop = 0
+    pause_time = 2.0
     filenames = sorted(os.listdir(frame_dir))
 
     for filename in filenames:
         if filename.endswith(".png"):
             path = os.path.join(frame_dir, filename)
             images.append(imageio.imread(path))
+    last_frame = images[-1]
+    pause_frames = int(pause_time * fps)
+    images.extend([last_frame] * pause_frames)
 
-    imageio.mimsave("perceptron.gif", images, fps=3)
+    imageio.mimsave("perceptron.gif", images, fps=2, loop=0)
 
 
 def visualize_perceptron(b: float, w: np.ndarray, y: np.ndarray, X: np.ndarray, epochs: int, alpha=.1, frame_dir=None):
