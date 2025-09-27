@@ -54,11 +54,12 @@ python3 perceptron_visualizer.py
 
 ### Optional Arguments
 
-This script offers four optional arguments:
+This script offers five optional arguments:
 
-- `-a`: The learning rate - default = .05
-- `-e`: The number of epochs the perceptron will run - default = 25
-- `np`: The number of data points to separate - default = 10
-- `-s`: The seed for the random point generator (see code for default)
+- `-a`: Learning rate - default = .05
+- `-e`: Number of epochs the perceptron will run - default = 25
+- `np`: Number of data points to separate - default = 10
+- `-s`: Seed for the random point generator (see code for default)
+- `-gif`: Toggling this argument saves the visualization as a gif
 
 > **Try this:**<br> `python3 percepton_visualizer.py -a .1 -e 10 -np 500 -s 872983`
