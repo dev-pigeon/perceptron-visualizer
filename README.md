@@ -62,4 +62,10 @@ This script offers five optional arguments:
 - `-s`: Seed for the random point generator (see code for default)
 - `-gif`: Toggling this argument saves the visualization as a gif
 
-> **Try this:**<br> `python3 percepton_visualizer.py -a .1 -e 10 -np 500 -s 872983`
+<br>
+
+**Try this:**<br>
+
+```bash
+python3 percepton_visualizer.py -a .1 -e 10 -np 500 -s 872983
+```
