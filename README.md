@@ -1,10 +1,10 @@
 # Perceptron Visualizer 🔮
 
-This simple script is a visual demonstration of Rosenblatt's Perceptron Algorithm operating in 2D space. I was inspired to write this script upon reading the wonderful book _Why Machines Learn_ by Anil Ananthaswamy.
+This simple script is a visual demonstration of Rosenblatt's Perceptron Algorithm operating in 2D space. I was inspired to write this after reading the wonderful book _Why Machines Learn_ by Anil Ananthaswamy.
 
 ## How It Works 🧠
 
-The **Perceptron algorithm** is one of the earliest machine learning algorithms, invented by American psychologist Frank Rosenblatt in 1957. It finds a linearly separting hyperplane or decision boundary that classifies the into as one of two categories: +1 or -1. The way it accomplishes this is quite elegant, here is the basic idea: <br>
+iThe **Perceptron algorithm** is one of the earliest machine learning algorithms, invented by American psychologist **Frank Rosenblatt** in 1957. It finds a linearly separting hyperplane or decision boundary that classifies the as one of two categories: `+1 or -1`. The way it accomplishes this is quite elegant, here is the basic idea: <br>
 
 1. Initialize a weight vector **w** and a bias term **b** to zero. <br>
 2. For each observation $x_i$ and its corresponding label $y_i \in \{-1, +1\}$ in $X$ do the following: <br>
