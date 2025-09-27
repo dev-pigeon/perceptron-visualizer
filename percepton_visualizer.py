@@ -2,9 +2,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import argparse
 from datetime import datetime
+import os
 
 
-def visualize_perceptron(b: float, w: np.ndarray, y: np.ndarray, X: np.ndarray, epochs: int, alpha=.1):
+def get_frames_path(frame_dir, frame_num):
+    if not os.path.isdir(frame_dir):
+        print("making dir")
+        print(f"{frame_dir} does not exist, creating...")
+        os.mkdir(frame_dir)
+
+    path = os.path.join(frame_dir, f"frame{frame_num}.png")
+    return path
+
+
+def visualize_perceptron(b: float, w: np.ndarray, y: np.ndarray, X: np.ndarray, epochs: int, alpha=.1, frame_dir=None):
+    frame_num = 0
     for i in range(epochs):
         update_occured = False
         for i in range(len(X)):
@@ -17,14 +29,18 @@ def visualize_perceptron(b: float, w: np.ndarray, y: np.ndarray, X: np.ndarray, 
                 b = b + (alpha * yi)
 
         if not update_occured:
-            return {"weights": w, "bias": b}
+            break
         else:
-            plot_hyperplane(b, w, X)
+            if frame_dir is not None:
+                plot_hyperplane(b, w, X, False, frame_dir, frame_num)
+                frame_num += 1
+            else:
+                plot_hyperplane(b, w, X)
 
     return {"weights": w, "bias": b}
 
 
-def plot_hyperplane(b, w, X, final=False):
+def plot_hyperplane(b, w, X, final=False, frame_dir=None, frame_num=None):
     plt.clf()
     x1_min, x1_max = X[:, 0].min(), X[:, 0].max()
     x2_min, x2_max = X[:, 1].min(), X[:, 1].max()
@@ -41,6 +57,13 @@ def plot_hyperplane(b, w, X, final=False):
 
     plt.legend()
     plt.grid(False)
+
+    if frame_dir is not None and frame_num is not None:
+        # get the path
+        path = get_frames_path(frame_dir, frame_num)
+        plt.savefig(path)
+        pass
+
     if final:
         plt.show()
     else:
@@ -64,6 +87,8 @@ if __name__ == "__main__":
     parser.add_argument('-np', '--num-points',
                         help="The number of points to plot.")
     parser.add_argument('-s', '--seed', help="Seed for the point generation.")
+    parser.add_argument(
+        '-gif', action="store_true", help="Flag to determine if execution should be saved to gif")
 
     b = 0
     w = np.array([0, 0])
@@ -75,11 +100,12 @@ if __name__ == "__main__":
     alpha = float(args.alpha) if args.alpha is not None else .05
     epochs = int(args.epochs) if args.epochs is not None else 25
     seed = int(args.seed) if args.seed is not None else generate_seed()
+    frame_dir = "./frames" if args.gif else None
 
     np.random.seed(seed)
     X = np.random.uniform(low=0, high=1000, size=(num_points, 2))
     y = np.array([1 if x2 > x1 + 2 else -1 for x1, x2 in X])
 
     values = visualize_perceptron(
-        b=b, w=w, y=y, X=X, epochs=epochs, alpha=alpha)
+        b=b, w=w, y=y, X=X, epochs=epochs, alpha=alpha, frame_dir=frame_dir)
     plot_hyperplane(b=values['bias'], w=values['weights'], X=X, final=True)
