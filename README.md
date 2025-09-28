@@ -67,5 +67,5 @@ This script offers five optional arguments:
 **Try this:**<br>
 
 ```bash
-python3 percepton_visualizer.py -a .1 -e 10 -np 500 -s 872983
+python3 percepton_visualizer.py -a .1 -e 10 -np 100 -s 872983
 ```
