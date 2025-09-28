@@ -10,8 +10,8 @@ The **Perceptron algorithm** is one of the earliest machine learning algorithms,
 2. For each observation $x_i$ and its corresponding label $y_i \in \{-1, +1\}$ in $X$ do the following: <br>
    2a. If $y_i(w^Tx + b) <= 0$: <br>
    - The weight vector and bias are wrong, update them: <br>
-     $w_{new} \rightarrow w_{old} + \alpha*y_i*x_i$ <br>
-     $b_{new} \rightarrow b_{old} + \alpha*y_i$
+     $w_{new} \rightarrow w_{old} + \alpha y_i x_i$ <br>
+     $b_{new} \rightarrow b_{old} + \alpha y_i$
 3. Repeat step two for epoch times or until there are no updates.
 
 This script animates this learning process by visualizing how the decision boundary shifts after each iteration of all the points in $X$.
