@@ -72,8 +72,8 @@ def plot_hyperplane(b, w, X, final=False, frame_dir=None, frame_num=None):
     intercept = float(-b / w[1])
     x2_vals = slope * x1_vals - intercept
 
-    equation_string = f"y = {slope:.5f}x + {intercept:.5f}"
-    boundary_label = f"Decision Boundary \n{equation_string} \nbias = {b} \nweights=[{w[0]:.5f}, {w[1]:.5f}]"
+    equation_string = f"y = {slope:.3f}x + {intercept:.5f}"
+    boundary_label = f"Decision Boundary \n{equation_string} \nbias = {b:.3f} \nweights=[{w[0]:.3f}, {w[1]:.3f}]"
     plt.plot(x1_vals, x2_vals, color='purple',
              label=boundary_label)
 
