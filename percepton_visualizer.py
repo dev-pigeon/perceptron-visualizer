@@ -64,19 +64,19 @@ def plot_hyperplane(b, w, X, final=False, frame_dir=None, frame_num=None):
 
     x1_min, x1_max = X[:, 0].min(), X[:, 0].max()
     x2_min, x2_max = X[:, 1].min(), X[:, 1].max()
-    plt.xlim(x1_min, x1_max)
-    plt.ylim(x2_min, x2_max)
     x1_vals = np.linspace(x1_min, x1_max, 100)
 
     slope = float(-w[0] / w[1])
     intercept = float(-b / w[1])
-    x2_vals = slope * x1_vals - intercept
+    x2_vals = -(w[0] / w[1]) * x1_vals - (b / w[1])
 
     equation_string = f"y = {slope:.3f}x + {intercept:.5f}"
     boundary_label = f"Decision Boundary \n{equation_string} \nbias = {b:.3f} \nweights=[{w[0]:.3f}, {w[1]:.3f}]"
     plt.plot(x1_vals, x2_vals, color='purple',
              label=boundary_label)
 
+    plt.xlim(x1_min, x1_max)
+    plt.ylim(x2_min, x2_max)
     plt.legend(loc='upper left')
     plt.grid(False)
     if frame_dir is not None and frame_num is not None:
