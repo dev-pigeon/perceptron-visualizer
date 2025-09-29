@@ -4,14 +4,14 @@ This simple script is a visual demonstration of Rosenblatt's Perceptron Algorith
 
 ## How It Works 🧠
 
-iThe **Perceptron algorithm** is one of the earliest machine learning algorithms, invented by American psychologist **Frank Rosenblatt** in 1957. It finds a linearly separting hyperplane or decision boundary that classifies the as one of two categories: `+1 or -1`. The way it accomplishes this is quite elegant, here is the basic idea: <br>
+The **Perceptron algorithm** is one of the earliest machine learning algorithms, invented by American psychologist **Frank Rosenblatt** in 1957. It finds a linearly separting hyperplane or decision boundary that classifies each data point as one of two categories: `+1 or -1`. The way it accomplishes this is quite elegant, here is the basic idea: <br>
 
 1. Initialize a weight vector **w** and a bias term **b** to zero. <br>
 2. For each observation $x_i$ and its corresponding label $y_i \in \{-1, +1\}$ in $X$ do the following: <br>
    2a. If $y_i(w^Tx + b) <= 0$: <br>
    - The weight vector and bias are wrong, update them: <br>
-     $w_{new} \rightarrow w_{old} + \alpha*y_i*x_i$ <br>
-     $b_{new} \rightarrow b_{old} + \alpha*y_i$
+     $w_{new} \rightarrow w_{old} + \alpha y_i x_i$ <br>
+     $b_{new} \rightarrow b_{old} + \alpha y_i$
 3. Repeat step two for epoch times or until there are no updates.
 
 This script animates this learning process by visualizing how the decision boundary shifts after each iteration of all the points in $X$.
