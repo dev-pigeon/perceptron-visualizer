@@ -31,7 +31,7 @@ def make_gif(frame_dir):
     pause_frames = int(pause_time * fps)
     images.extend([last_frame] * pause_frames)
 
-    imageio.mimsave("perceptron.gif", images, fps=2, loop=0)
+    imageio.mimsave("perceptron.gif", images, fps=fps, loop=loop)
 
 
 def visualize_perceptron(b: float, w: np.ndarray, y: np.ndarray, X: np.ndarray, epochs: int, alpha=.1, frame_dir=None):
@@ -77,14 +77,14 @@ def plot_hyperplane(b, w, X, final=False, frame_dir=None, frame_num=None):
     plt.plot(x1_vals, x2_vals, color='purple',
              label=boundary_label)
 
+    plt.legend(loc='upper left')
+    plt.grid(False)
     if frame_dir is not None and frame_num is not None:
         path = get_frames_path(frame_dir, frame_num)
         plt.savefig(path)
 
     timeout = .5 if not final else 5
 
-    plt.legend(loc='upper left')
-    plt.grid(False)
     plt.draw()
     plt.pause(timeout)
 
