@@ -22,7 +22,7 @@ This script animates this learning process by visualizing how the decision bound
 
 Here’s what the algorithm looks like in action:
 
-![Perceptron Animation](perceptron-v2.gif)
+![Perceptron Animation](perceptron.gif)
 
 ## Requirements ⚙️
 
